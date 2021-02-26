@@ -13,12 +13,23 @@
 </head>
 
 <body>
-    <button id="new">
+    <button id="new-btn">
         <span class="material-icons">
             add_box
         </span>
         Add Book
     </button>
+
+    <form id="new-form" action="submit">
+        <label for="title">Title: </label>
+        <input type="text" name="title">
+        <label for="author">Author: </label>
+        <input type="text" name="author">
+        <label for="page-number">Page Number: </label>
+        <input type="number" name="page-number"">
+        <label for="read">Read</label>
+        <input type="checkbox" name="read">
+    </form>
 
     <main id="card-grid">
         <div class="card">
@@ -44,7 +55,7 @@
                 Delete
             </button>
         </div>
-        
+
     </main>
 
     <a id="code" href="https://github.com/Helium5250/Calculator">&lt;code/&gt;</a>

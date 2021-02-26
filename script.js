@@ -1,6 +1,6 @@
-const newBtn = document.querySelector('#new');
+const newBtn = document.querySelector('#new-btn');
+const cardGrid = document.querySelector('#card-grid');
 const card = document.querySelector('.card');
-const cardGrid = document.querySelector('#card-grid')
 class Book {
     constructor(title, author, pageNum, isRead = false) {
         this.title = title;
@@ -9,8 +9,8 @@ class Book {
         this.isRead = isRead;
     }
 
-    updateRead() {
-        this.read = true;
+    updateRead(isRead) {
+        this.isRead = isRead;
     }
 }
 
@@ -21,10 +21,17 @@ newBtn.onclick = () => {
     newCard.querySelector('.title').textContent = newBook.title;
     newCard.querySelector('.author').textContent = newBook.author;
     newCard.querySelector('.page-number').textContent = newBook.pageNum;
-    newCard.querySelector('.read').checked = newBook.isRead;
+
+    const checkbox = newCard.querySelector('.read');
+    newBook.isRead = checkbox.checked;
+
+    checkbox.onclick = () => {
+        newBook.updateRead(checkbox.checked);
+        console.log(newBook.isRead);
+    };
 
     cardGrid.append(newCard);
 
-    console.log(newBook);
-    console.log(newCard);
+    // console.log(newBook);
+    // console.log(newCard);
 };
