@@ -1,0 +1,48 @@
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card {
+    margin: 1em;
+    padding: 1em;
+
+    border-radius: 1em;
+    background-color: beige;
+}
+
+#code {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    padding: 0.5em 1em;
+    margin: 0.5em;
+
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 0%);
+}
+
+#code:hover {
+    background-color: hsl(0, 0%, 24%);
+}
+
+#code:active {
+    background-color: hsl(0, 0%, 36%);
+}
