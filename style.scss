@@ -146,6 +146,10 @@ input[type="checkbox"]:checked:after {
     }
 }
 
+.card:first-child {
+    display: none;
+}
+
 #bottom-nav {
     position: fixed;
     bottom: 0;
