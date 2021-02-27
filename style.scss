@@ -1,28 +1,69 @@
-a {
-    color: inherit;
-    text-decoration: none;
+$bg-color: hsl(220, 43%, 4%);
+$emp-color: hsl(216, 28%, 7%);
+$btn-color: hsl(215, 15%, 15%);
+$btn-hover-color: hsl(212, 12%, 21%);
+$border-color: hsl(212, 12%, 21%);
+$border-hover-color: hsl(212, 9%, 58%);
+
+$txt-color: hsl(210, 17%, 82%);
+
+body {
+    color: $txt-color;
+    background-color: $bg-color;
+    margin-bottom: 12em;
 }
 
-button {
-    display: flex;
+input[type="checkbox"] {
+    position: relative;
+
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+
+    appearance: none;
+    cursor: pointer;
+    padding: 0.3em;
+    background-color: $txt-color;
+    border: 1px solid $border-color;
+}
+
+input[type="checkbox"]:hover,
+input[type="checkbox"]:focus {
+    outline: 1px solid $border-hover-color;
+}
+
+input[type="checkbox"]:checked:after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    padding: 0.2em;
+    background-color: $btn-hover-color;
 }
 
 #new-form-panel {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
 
     display: none;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     height: 100vh;
     width: 100vw;
 
-    background-color: hsla(0, 0%, 60%, 0.8);
-    transition: 0.5s;
+    background-color: hsla(220, 43%, 4%, 0.9);
+    backdrop-filter: blur(8px);
+
+    input:not([type="checkbox"]) {
+        padding: 0.25em 0.75em;
+        color: inherit;
+
+        border-radius: 0.25em;
+        border: 1px solid $border-color;
+        background-color: $bg-color;
+    }
 }
 
 #new-form {
@@ -31,14 +72,22 @@ button {
     justify-content: flex-start;
     align-items: flex-start;
 
+    margin-top: 20vh;
     padding: 2em;
 
+    color: $txt-color;
+
     border-radius: 1em;
-    background-color: bisque;
+    border: 1px solid $border-color;
+    background-color: $emp-color;
+
+    button {
+        margin-left: auto;
+    }
 }
 
 #new-form>* {
-    margin: 0.3em 0;
+    margin: 0.5em;
 }
 
 #card-grid {
@@ -46,6 +95,8 @@ button {
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: center;
+
+    margin: 1em;
 }
 
 .card {
@@ -54,13 +105,16 @@ button {
     justify-content: flex-end;
     align-items: stretch;
 
-    width: 18em;
+    width: 20em;
 
     margin: 1em;
-    padding: 1em;
+    padding: 1.5em;
+
+    color: $txt-color;
 
     border-radius: 1em;
-    background-color: beige;
+    border: 1px solid $border-color;
+    background-color: $emp-color;
 
     ul {
         margin: 0;
@@ -75,19 +129,21 @@ button {
         margin: 1em 0;
     }
 
-    li:after {
+    li:not(:last-child):after {
         content: "";
         display: block;
 
         width: 100%;
         height: 1px;
 
-        margin: 0.25em 0;
+        margin: 1em 0;
 
-        background-color: hsl(0, 0%, 70%);
+        background-color: $border-color;
     }
 
-    button {}
+    button {
+        margin-top: 1em;
+    }
 }
 
 #bottom-nav {
@@ -102,24 +158,64 @@ button {
     align-items: center;
 
     padding: 1em;
+
+    background-color: $emp-color;
 }
 
-#new-btn {}
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-#code {
     padding: 0.5em 1em;
 
-    font-family: 'Courier New', Courier, monospace;
-    color: white;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1em;
+    color: $txt-color;
 
+    cursor: pointer;
     border-radius: 10px;
-    background-color: hsl(0, 0%, 0%);
+    outline: none;
+    border: 1px solid $border-color;
+    background-color: $btn-color;
+    transition: 0.2s cubic-bezier(.3, 0, .5, 1);
+
+    .material-icons {
+        margin-right: 0.25em;
+    }
 }
 
-#code:hover {
-    background-color: hsl(0, 0%, 24%);
+.btn:hover,
+.btn:focus {
+    border: 1px solid $border-hover-color;
+    background-color: $btn-hover-color;
 }
 
-#code:active {
-    background-color: hsl(0, 0%, 36%);
+.btn:active {
+    background-color: $emp-color;
+}
+
+@media (max-width: 960px) {
+    #card-grid {
+        justify-content: space-evenly;
+    }
+
+    .card {
+        margin: 1em 1em;
+        max-width: 20em;
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    #bottom-nav {
+        flex-direction: column;
+        padding: 0.5em;
+
+        .btn {
+            padding: 0.25em 0.75em;
+            margin: 0.25em 0;
+        }
+    }
 }

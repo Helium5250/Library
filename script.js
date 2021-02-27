@@ -65,7 +65,7 @@ function createCard(book) {
     const newCard = card.cloneNode(true);
     cardGrid.append(newCard);
 
-    const checkbox = newCard.querySelector('.read');
+    const checkbox = newCard.querySelector('#read');
     checkbox.onclick = () => {
         book.updateRead(checkbox.checked);
         library[library.indexOf(book)] = book;
@@ -73,9 +73,8 @@ function createCard(book) {
     };
 
 
-    const deleteBtn = newCard.querySelector('.delete');
+    const deleteBtn = newCard.querySelector('#delete');
     deleteBtn.onclick = () => {
-        console.log("deleting");
         library.splice(library.indexOf(book), 1);
         localStorage.setItem('library', JSON.stringify(library));
         book = null;
@@ -87,10 +86,10 @@ function createCard(book) {
 
 function updateCard(newBook, newCard) {
     formPanel.style.display = 'none';
-    newCard.querySelector('.title').textContent = newBook.title;
-    newCard.querySelector('.author').textContent = newBook.author;
-    newCard.querySelector('.page-number').textContent = newBook.pageNum;
-    newCard.querySelector('.read').checked = newBook.isRead;
+    newCard.querySelector('#title').textContent = newBook.title;
+    newCard.querySelector('#author').textContent = newBook.author;
+    newCard.querySelector('#page-number').textContent = newBook.pageNum;
+    newCard.querySelector('#read').checked = newBook.isRead;
 }
 
 let library = [];

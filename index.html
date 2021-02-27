@@ -20,27 +20,27 @@
             <label for="author">Author: </label>
             <input id="author" type="text" name="author" placeholder="Book Author">
             <label for="page-number">Page Number: </label>
-            <input id="page-number" type="number" name="page-number"" placeholder="100">
+            <input id="page-number" type="text" name="page-number"" placeholder=" 100">
             <div>
                 <label for="read">Read</label>
                 <input id="read" type="checkbox" name="read">
             </div>
-            <button id="submit-btn">Submit</button>
+            <button class="btn" id="submit-btn">Submit</button>
         </div>
     </div>
 
     <main id="card-grid">
         <div class="card">
             <ul class="page-info">
-                <li>Title: <span class="title"></span></li>
-                <li>Author: <span class="author"></span></li>
-                <li>Page Number: <span class="page-number"></span></li>
+                <li>Title: <span id="title"></span></li>
+                <li>Author: <span id="author"></span></li>
+                <li>Page Number: <span id="page-number"></span></li>
                 <li>
                     <label for="read">Read</label>
-                    <input type="checkbox" name="read" class="read">
+                    <input type="checkbox" name="read" id="read">
                 </li>
             </ul>
-            <button class="delete">
+            <button class="btn" id="delete">
                 <span class="material-icons">
                     delete
                 </span>
@@ -50,21 +50,26 @@
     </main>
 
     <nav id="bottom-nav">
-        <button id="new-btn">
+        <button id="new-btn" class="btn">
             <span class="material-icons">
                 add_box
             </span>
-            Add Book
+            <span>Add Book</span>
         </button>
 
-        <button id="clear-btn">
+        <button id="clear-btn" class="btn">
             <span class="material-icons">
                 clear_all
             </span>
-            Clear Local Storage
+            <span>Clear Local Storage</span>
         </button>
-    
-        <a id="code" href="https://github.com/Helium5250/Calculator">&lt;code/&gt;</a>
+
+        <a id="code-btn" class="btn" href="https://github.com/Helium5250/Library">
+            <span class="material-icons">
+                code
+            </span>
+            <span>Code</span>
+        </a>
     </nav>
 
     <script src="./script.js"></script>
