@@ -120,3 +120,9 @@ submitBtn.onclick = () => {
     const card = createCard(book);
     updateCard(book, card);
 };
+
+const clearBtn = document.querySelector('#clear-btn');
+clearBtn.onclick = () => {
+    localStorage.clear();
+    location.reload();
+}
