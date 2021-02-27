@@ -1,9 +1,3 @@
-const newBtn = document.querySelector('#new-btn');
-const submitBtn = document.querySelector('#submit-btn');
-const formPanel = document.querySelector('#new-form-panel')
-const form = document.querySelector('#new-form');
-const cardGrid = document.querySelector('#card-grid');
-const card = document.querySelector('.card');
 class Book {
     constructor(title, author, pageNum, isRead) {
         this.title = title;
@@ -17,34 +11,63 @@ class Book {
     }
 }
 
-newBtn.onclick = () => {
+const formPanel = document.querySelector('#new-form-panel');
+const form = document.querySelector('#new-form');
+const title = form.querySelector('#title');
+const author = form.querySelector('#author');
+const pageNum = form.querySelector('#page-number');
+const isRead = form.querySelector('#read');
+
+function openForm() {
     formPanel.style.display = 'flex';
-};
+    title.value = '';
+    author.value = '';
+    pageNum.value = '';
+    isRead.checked = false;
+}
 
-submitBtn.onclick = () => {
-    const newBook = new Book(
-        form.querySelector('#title').value,
-        form.querySelector('#author').value,
-        form.querySelector('#page-number').value,
-        form.querySelector('#read').checked
-    );
+function closeForm(newBook, newCard) {
     formPanel.style.display = 'none';
-
-    const newCard = card.cloneNode(true);
     newCard.querySelector('.title').textContent = newBook.title;
     newCard.querySelector('.author').textContent = newBook.author;
     newCard.querySelector('.page-number').textContent = newBook.pageNum;
+    newCard.querySelector('.read').checked = newBook.isRead;
+}
 
-    const checkbox = newCard.querySelector('.read');
-    checkbox.checked = newBook.isRead;
+const newBtn = document.querySelector('#new-btn');
 
-    checkbox.onclick = () => {
-        newBook.updateRead(checkbox.checked);
-        console.log(newBook.isRead);
-    };
+newBtn.onclick = () => {
+    openForm();
+};
 
+const cardGrid = document.querySelector('#card-grid');
+const card = document.querySelector('.card');
+
+const submitBtn = document.querySelector('#submit-btn');
+submitBtn.onclick = () => {
+    let newBook = new Book(title.value, author.value, pageNum.value, isRead.checked);
+    const newCard = card.cloneNode(true);
+    closeForm(newBook, newCard);
     cardGrid.append(newCard);
 
-    // console.log(newBook);
-    // console.log(newCard);
+    const checkbox = newCard.querySelector('.read');
+    checkbox.onclick = () => {
+        newBook.updateRead(checkbox.checked);
+    };
+
+    const editBtn = newCard.querySelector('.edit');
+    editBtn.onclick = () => {
+        openForm();
+    };
+
+    submitBtn.onclick = () => {
+        newBook = new Book(title.value, author.value, pageNum.value, isRead.checked);
+        closeForm(newBook, newCard);
+    };
+
+    const deleteBtn = newCard.querySelector('.delete');
+    deleteBtn.onclick = () => {
+        newBook = null;
+        cardGrid.removeChild(newCard);
+    };
 };

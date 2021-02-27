@@ -15,13 +15,6 @@ button {
           align-items: center;
 }
 
-#new-btn {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 1em;
-}
-
 #new-form-panel {
   position: fixed;
   top: 0;
@@ -36,8 +29,8 @@ button {
   height: 100vh;
   width: 100vw;
   background-color: rgba(153, 153, 153, 0.8);
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 #new-form {
@@ -121,12 +114,25 @@ button {
   background-color: #b3b3b3;
 }
 
-#code {
+#bottom-nav {
   position: fixed;
   bottom: 0;
-  right: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em;
+}
+
+#code {
   padding: 0.5em 1em;
-  margin: 0.5em;
   font-family: 'Courier New', Courier, monospace;
   color: white;
   border-radius: 10px;

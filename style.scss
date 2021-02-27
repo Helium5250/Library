@@ -9,14 +9,6 @@ button {
     align-items: center;
 }
 
-#new-btn {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    margin: 1em;
-}
-
 #new-form-panel {
     position: fixed;
     top: 0;
@@ -30,7 +22,7 @@ button {
     width: 100vw;
 
     background-color: hsla(0, 0%, 60%, 0.8);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 #new-form {
@@ -98,13 +90,25 @@ button {
     button {}
 }
 
-#code {
+#bottom-nav {
     position: fixed;
     bottom: 0;
-    right: 0;
+    left: 0;
 
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1em;
+}
+
+#new-btn {
+}
+
+#code {
     padding: 0.5em 1em;
-    margin: 0.5em;
 
     font-family: 'Courier New', Courier, monospace;
     color: white;
